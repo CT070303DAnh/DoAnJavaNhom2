@@ -1,5 +1,6 @@
-# DoAnJavaNhom2![SODOJV](https://github.com/CT070303DAnh/DoAnJavaNhom2/assets/134196542/dba013b3-bf2e-4cdb-9b67-617b7a224fa9)
+# DoAnJavaNhom2
 ## Đồ án phần mềm quản lí thư viện
+![SoDoCSDL](https://github.com/CT070303DAnh/DoAnJavaNhom2/assets/134196542/57829bef-23a8-4e3c-a659-febd69f55365)
 
 ## Các thành viên:
 ## Bùi Đức Anh
