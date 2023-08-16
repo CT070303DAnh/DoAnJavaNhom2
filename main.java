@@ -4,6 +4,7 @@
  */
 package com.actvn.java06.mavenproject1;
 
+import java.awt.SystemColor;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -12,12 +13,12 @@ import java.util.Scanner;
  * @author Admin
  */
 public class main extends QuanLy {
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         QuanLy ql = new QuanLy();
         Date now = new Date();
-        
+
         int a;
         do {
             System.out.println("==========================");
@@ -26,8 +27,9 @@ public class main extends QuanLy {
             System.out.println("==" + now + "==");
             System.out.println("");
             System.out.println("SO LUONG SACH DANG SO HUU(TONG) :" + ql.tongSoSachTrongKho(ql.getKhoSach()));
-            System.out.println("SO LUONG SACH KHAC NHAU: " + ql.getKhoSach().size());
+            System.out.println("SO LOAI SACH KHAC NHAU: " + ql.getKhoSach().size());
             System.out.println("SO LUONG SACH DANG DUOC MUON: " + ql.getSachDangDuocMuon().size());
+            System.out.println("SO LUONG SACH CHUA AI MUON: ");
             System.out.println("SO LUONG SACH QUA HAN TRA: " + ql.getSachQuaHanTra().size());
             System.out.println("");
             System.out.println("1. Them sach");
@@ -41,7 +43,7 @@ public class main extends QuanLy {
             System.out.println("00. Thoat khoi MENU");
             System.out.println("");
             System.out.println("");
-            
+
             System.out.print("NHAP LUA CHON CUA BAN: \n");
             a = sc.nextInt();
             switch (a) {
@@ -54,15 +56,15 @@ public class main extends QuanLy {
                 case 4 ->
                     ql.showKhoSach(ql.getKhoSach());
                 case 5 ->
-                    ql.showKhoSach(ql.getSachQuaHanTra());
+                    System.out.println("Chua lam @@@");
                 case 6 ->
                     ql.taoPhienMuonSach();
                 case 7 ->
-                    System.out.println("Tinh nang dang hoan thien...");
+                    ql.showKhoSach(ql.getSachQuaHanTra());
                 case 8 ->
                     ql.showKhoSach(ql.getSachDangDuocMuon());
             }
         } while (a != 00);
-        
+
     }
 }
