@@ -79,7 +79,7 @@ public class Sach {
 
     @Override
     public String toString() {
-        return "Sach{ " + "maSach = " + maSach + ", tenSach = " + tenSach + ", tacGia = " + tacGia + ", theLoai = " + theLoai + ", soLuong = " + soLuong + ", NXB = " + NXB + '}';
+        String t = String.format("Ma sach: " + maSach + ", Ten Sach: " + tenSach + ", Tac gia:  " + tacGia + ", The loai:  " + theLoai + ", So luong: " + soLuong + ", NXB: " + NXB);
+        return t;
     }
-
 }

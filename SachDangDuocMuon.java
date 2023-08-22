@@ -4,6 +4,8 @@
  */
 package com.actvn.java06.mavenproject1;
 
+import java.util.Calendar;
+
 /**
  *
  * @author Admin
@@ -11,24 +13,24 @@ package com.actvn.java06.mavenproject1;
 public class SachDangDuocMuon extends Sach {
 
     private String maSVmuon;
-    private String thoiGianMuonSach;
-    private String thoiGianTraSach;
+    private Calendar thoiGianMuonSach;
+    private Calendar thoiGianTraSach;
 
-    public SachDangDuocMuon(String maSVmuon, String thoiGianMuonSach, String thoiGianTraSach, String maSach, String tenSach, String tacGia, String theLoai, int soLuong, String NXB) {
-        super(maSach, tenSach, tacGia, theLoai, soLuong, NXB);
+    public SachDangDuocMuon(String maSVmuon, Calendar thoiGianMuonSach, Calendar thoiGianTraSach, String maSach, String tenSach, String tacGia, String theLoai, int soLuong, String NXB) {
+        super(maSach, tenSach, tacGia, theLoai, 1, NXB);
         this.maSVmuon = maSVmuon;
         this.thoiGianMuonSach = thoiGianMuonSach;
         this.thoiGianTraSach = thoiGianTraSach;
     }
 
-    public SachDangDuocMuon(String maSVmuon, String thoiGianMuonSach, String thoiGianTraSach) {
+    public SachDangDuocMuon(String maSVmuon, Calendar thoiGianMuonSach, Calendar thoiGianTraSach) {
         this.maSVmuon = maSVmuon;
         this.thoiGianMuonSach = thoiGianMuonSach;
         this.thoiGianTraSach = thoiGianTraSach;
-    } 
+    }
 
     public SachDangDuocMuon(String maSach, String tenSach, String tacGia, String theLoai, int soLuong, String NXB) {
-        super(maSach, tenSach, tacGia, theLoai, soLuong, NXB);
+        super(maSach, tenSach, tacGia, theLoai, 1, NXB);
     }
 
     public SachDangDuocMuon() {
@@ -42,29 +44,25 @@ public class SachDangDuocMuon extends Sach {
         this.maSVmuon = maSVmuon;
     }
 
-    public String getThoiGianMuonSach() {
+    public Calendar getThoiGianMuonSach() {
         return thoiGianMuonSach;
     }
 
-    public String getThoiGianTraSach() {
+    public Calendar getThoiGianTraSach() {
         return thoiGianTraSach;
     }
 
-    public void setThoiGianMuonSach(String thoiGianMuonSach) {
+    public void setThoiGianMuonSach(Calendar thoiGianMuonSach) {
         this.thoiGianMuonSach = thoiGianMuonSach;
     }
 
-    public void setThoiGianTraSach(String thoiGianTraSach) {
+    public void setThoiGianTraSach(Calendar thoiGianTraSach) {
         this.thoiGianTraSach = thoiGianTraSach;
     }
 
     @Override
     public String toString() {
-        return "SachDangDuocMuon{" + " maSVmuon = " + maSVmuon + ", thoiGianMuonSach = " + thoiGianMuonSach + ", thoiGianTraSach = " + thoiGianTraSach + '}';
+        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoiGianMuonSach.getTime() + ", Thoi gian tra sach: " + thoiGianTraSach.getTime());
+        return t;
     }
-
-    
-    
-    
-
 }
