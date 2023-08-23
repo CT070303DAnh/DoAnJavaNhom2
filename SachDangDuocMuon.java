@@ -62,7 +62,7 @@ public class SachDangDuocMuon extends Sach {
 
     @Override
     public String toString() {
-        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoiGianMuonSach + ", Thoi gian tra sach: " + thoiGianTraSach);
+        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoiGianMuonSach + ", Thoi gian phai tra sach: " + thoiGianTraSach);
         return t;
     }
 }

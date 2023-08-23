@@ -4,15 +4,10 @@
  */
 package com.actvn.java06.mavenproject1;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
+import java.util.Collections;
 
 /**
  *
@@ -149,8 +144,8 @@ public class QuanLy extends Sach {
         //Them vao list
         khoSach.add(sach);
         for (int i = 0; i < soLuong; i++) {
-            sach.setSoLuong(1);
-            sachChuaAiMuon.add(sach);
+            Sach s = new Sach(maSach, tenSach, tacGia, theLoai, 1, NXB);
+            sachChuaAiMuon.add(s);
         }
     }
 
@@ -234,8 +229,8 @@ public class QuanLy extends Sach {
             if (timSTTtheomaSach(khoSach, maSachChoMuon) == -1) {
                 System.out.println("Khong tim thay sach");
             } else {
-                int index = timSTTtheomaSach(khoSach, maSachChoMuon);
-                if (khoSach.get(index).getSoLuong() == 0) {
+                int index = timSTTtheomaSach(sachChuaAiMuon, maSachChoMuon);
+                if (index == -1) {
                     System.out.println("Sach da duoc muon het hoac khong ton tai!");
                 } else {
                     //set thoi gian muon/tra
@@ -281,7 +276,7 @@ public class QuanLy extends Sach {
 
     //trasach
     public void taoPhienTraSach() {
-        sc.nextLine();
+        sc.next();
         System.out.println("Nhap ma sach muon tra: ");
         String ms = sc.nextLine();
         //Kiem tra xem sach nay co dang duoc muon khong
@@ -312,6 +307,7 @@ public class QuanLy extends Sach {
         LocalDate now = LocalDate.now();
         for (int i = 0; i < sachDangDuocMuon.size(); i++) {
             if (now.isBefore(sachDangDuocMuon.get(i).getThoiGianTraSach())) {
+                //test //SachDangDuocMuon sqht = new SachDangDuocMuon(sachDangDuocMuon.get(i).getMaSVmuon(), sachDangDuocMuon.get(i).getThoiGianMuonSach(), sachDangDuocMuon.get(i).getThoiGianTraSach(), sachDangDuocMuon.get(i).getMaSach(), sachDangDuocMuon.get(i).getTenSach(), sachDangDuocMuon.get(i).getTacGia(), sachDangDuocMuon.get(i).getTheLoai(), 1, sachDangDuocMuon.get(i).getNXB());
                 sachQuaHanTra.add(sachDangDuocMuon.get(i));
             }
         }
@@ -320,9 +316,7 @@ public class QuanLy extends Sach {
     public void showSachQuaHan() {
         System.out.println("=======================");
         for (int i = 0; i < sachQuaHanTra.size(); i++) {
-            System.out.println("");
-            sachQuaHanTra.get(i).toString();
-            System.out.println("_______________________");
+            System.out.println(sachQuaHanTra.get(i).toString());
         }
     }
 
@@ -340,7 +334,7 @@ public class QuanLy extends Sach {
 
     //Loc 10 dau sach con lai it nhat
     public void locSachConLaiItNhat() {
-        
+
     }
 
     //Loc nhung sinh vien da muon voi 1 dau sach cu the
@@ -348,7 +342,7 @@ public class QuanLy extends Sach {
         System.out.println("Nhap ma sach muon kiem tra: ");
         String ms = sc.nextLine();
         for (int i = 0; i < sachDangDuocMuon.size(); i++) {
-            if (ms == null ? sachDangDuocMuon.get(i).getMaSach() == null : ms.equals(sachDangDuocMuon.get(i).getMaSach())) {
+            if (ms.equals(sachDangDuocMuon.get(i).getMaSach())) {
                 System.out.println(sachDangDuocMuon.get(i).getMaSVmuon());
             }
         }
@@ -357,16 +351,16 @@ public class QuanLy extends Sach {
     //Loc danh sach nhung dau sach da muon vao 1 ngay cu the
     public void locNhungDauSachDaMuonVao1NgayCuThe() {
         System.out.println("Nhap ngay muon kiem tra");
-        System.out.print("Ngay: ");
+        System.out.println("Ngay: ");
         int ngay = sc.nextInt();
-        System.out.print("Thang: ");
+        System.out.println("Thang: ");
         int thang = sc.nextInt();
-        System.out.print("Nam: ");
+        System.out.println("Nam: ");
         int nam = sc.nextInt();
         LocalDate tgian = LocalDate.of(nam, thang, ngay);
         for (int i = 0; i < sachDangDuocMuon.size(); i++) {
             if (tgian.isEqual(sachDangDuocMuon.get(i).getThoiGianMuonSach())) {
-                sachDangDuocMuon.get(i).toString();
+                System.out.println(sachDangDuocMuon.get(i).toString());
             }
         }
     }

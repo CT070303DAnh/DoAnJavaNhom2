@@ -49,7 +49,7 @@ public class main extends QuanLy {
             System.out.println("11.  Loc nhung sinh vien da muon 1 cuon sach voi ten cu the");
             System.out.println("12.  Loc nhung dau sach duoc muon vao 1 ngay cu the");
             System.out.println("13.  Loc 10 dau sach con lai trong kho voi so luong it nhat");
-            System.out.println("00.  Thoat khoi MENU");
+            System.out.println("0.  Thoat khoi MENU");
             System.out.println("");
             System.out.println("");
             System.out.print("NHAP LUA CHON CUA BAN: \n");
@@ -83,7 +83,7 @@ public class main extends QuanLy {
                 case 13 ->
                     ql.locSachConLaiItNhat();
             }
-        } while (a != 00);
+        } while (a != 0);
 
     }
 }
