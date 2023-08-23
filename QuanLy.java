@@ -276,7 +276,7 @@ public class QuanLy extends Sach {
 
     //trasach
     public void taoPhienTraSach() {
-        sc.next();
+        sc.nextLine();
         System.out.println("Nhap ma sach muon tra: ");
         String ms = sc.nextLine();
         //Kiem tra xem sach nay co dang duoc muon khong
@@ -306,8 +306,7 @@ public class QuanLy extends Sach {
     public void locSachQuaHanTra() {
         LocalDate now = LocalDate.now();
         for (int i = 0; i < sachDangDuocMuon.size(); i++) {
-            if (now.isBefore(sachDangDuocMuon.get(i).getThoiGianTraSach())) {
-                //test //SachDangDuocMuon sqht = new SachDangDuocMuon(sachDangDuocMuon.get(i).getMaSVmuon(), sachDangDuocMuon.get(i).getThoiGianMuonSach(), sachDangDuocMuon.get(i).getThoiGianTraSach(), sachDangDuocMuon.get(i).getMaSach(), sachDangDuocMuon.get(i).getTenSach(), sachDangDuocMuon.get(i).getTacGia(), sachDangDuocMuon.get(i).getTheLoai(), 1, sachDangDuocMuon.get(i).getNXB());
+            if (now.isAfter(sachDangDuocMuon.get(i).getThoiGianTraSach())) {
                 sachQuaHanTra.add(sachDangDuocMuon.get(i));
             }
         }
@@ -326,14 +325,14 @@ public class QuanLy extends Sach {
         System.out.println("Nhap NXB muon loc: ");
         String NXB = sc.nextLine();
         for (int i = 0; i < khoSach.size(); i++) {
-            if (NXB == null ? khoSach.get(i).getNXB() == null : NXB.equals(khoSach.get(i).getNXB())) {
+            if (NXB.equals(khoSach.get(i).getNXB())) {
                 System.out.println(khoSach.get(i).toString());
             }
         }
     }
 
     //Loc 10 dau sach con lai it nhat
-    public void locSachConLaiItNhat() {
+    public void loc10SachConLaiItNhat() {
 
     }
 

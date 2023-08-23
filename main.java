@@ -31,7 +31,8 @@ public class main extends QuanLy {
             System.out.println("SO LOAI SACH KHAC NHAU: " + ql.getKhoSach().size());
             System.out.println("SO LUONG SACH CHUA AI MUON: " + ql.getSachChuaAiMuon().size());
             System.out.println("SO LUONG SACH DANG DUOC MUON: " + ql.getSachDangDuocMuon().size());
-            System.out.println("SO LUONG SACH QUA HAN TRA: " + ql.getSachQuaHanTra().size());
+            System.out.println("SO LUONG SACH QUA HAN TRA NGAY HOM NAY: " + ql.getSachQuaHanTra().size());
+            System.out.println("");
             System.out.println("");
             System.out.println("1.   Them sach");
             System.out.println("2.   Xoa sach");
@@ -40,7 +41,7 @@ public class main extends QuanLy {
             System.out.println("4.   Hien thi kho sach");
             System.out.println("5.   Hien sach chua ai muon");
             System.out.println("6.   Hien thi danh sach sach dang duoc muon");
-            System.out.println("7.   Hien thi danh sach sach da qua han tra");
+            System.out.println("7.   Hien thi danh sach sach qua han tra ngay hom nay");
             System.out.println("\tMUON/TRA/LOC");
             System.out.println("8.   Tao phien muon sach");
             System.out.println("9.   Tao phien tra sach");
@@ -68,8 +69,10 @@ public class main extends QuanLy {
                     ql.showKhoSach(ql.getSachChuaAiMuon());
                 case 6 ->
                     ql.showKhoSach(ql.getSachDangDuocMuon());
-                case 7 ->
+                case 7 -> {
+                    ql.locSachQuaHanTra();
                     ql.showSachQuaHan();
+                }
                 case 8 ->
                     ql.taoPhienMuonSach();
                 case 9 ->
@@ -81,7 +84,7 @@ public class main extends QuanLy {
                 case 12 ->
                     ql.locNhungDauSachDaMuonVao1NgayCuThe();
                 case 13 ->
-                    ql.locSachConLaiItNhat();
+                    ql.loc10SachConLaiItNhat();
             }
         } while (a != 0);
 
