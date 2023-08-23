@@ -4,7 +4,7 @@
  */
 package com.actvn.java06.mavenproject1;
 
-import java.util.Calendar;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,17 +13,17 @@ import java.util.Calendar;
 public class SachDangDuocMuon extends Sach {
 
     private String maSVmuon;
-    private Calendar thoiGianMuonSach;
-    private Calendar thoiGianTraSach;
+    private LocalDate thoiGianMuonSach;
+    private LocalDate thoiGianTraSach;
 
-    public SachDangDuocMuon(String maSVmuon, Calendar thoiGianMuonSach, Calendar thoiGianTraSach, String maSach, String tenSach, String tacGia, String theLoai, int soLuong, String NXB) {
+    public SachDangDuocMuon(String maSVmuon, LocalDate thoiGianMuonSach, LocalDate thoiGianTraSach, String maSach, String tenSach, String tacGia, String theLoai, int soLuong, String NXB) {
         super(maSach, tenSach, tacGia, theLoai, 1, NXB);
         this.maSVmuon = maSVmuon;
         this.thoiGianMuonSach = thoiGianMuonSach;
         this.thoiGianTraSach = thoiGianTraSach;
     }
 
-    public SachDangDuocMuon(String maSVmuon, Calendar thoiGianMuonSach, Calendar thoiGianTraSach) {
+    public SachDangDuocMuon(String maSVmuon, LocalDate thoiGianMuonSach, LocalDate thoiGianTraSach) {
         this.maSVmuon = maSVmuon;
         this.thoiGianMuonSach = thoiGianMuonSach;
         this.thoiGianTraSach = thoiGianTraSach;
@@ -44,25 +44,25 @@ public class SachDangDuocMuon extends Sach {
         this.maSVmuon = maSVmuon;
     }
 
-    public Calendar getThoiGianMuonSach() {
+    public LocalDate getThoiGianMuonSach() {
         return thoiGianMuonSach;
     }
 
-    public Calendar getThoiGianTraSach() {
+    public LocalDate getThoiGianTraSach() {
         return thoiGianTraSach;
     }
 
-    public void setThoiGianMuonSach(Calendar thoiGianMuonSach) {
+    public void setThoiGianMuonSach(LocalDate thoiGianMuonSach) {
         this.thoiGianMuonSach = thoiGianMuonSach;
     }
 
-    public void setThoiGianTraSach(Calendar thoiGianTraSach) {
+    public void setThoiGianTraSach(LocalDate thoiGianTraSach) {
         this.thoiGianTraSach = thoiGianTraSach;
     }
 
     @Override
     public String toString() {
-        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoiGianMuonSach.getTime() + ", Thoi gian tra sach: " + thoiGianTraSach.getTime());
+        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoiGianMuonSach + ", Thoi gian tra sach: " + thoiGianTraSach);
         return t;
     }
 }
