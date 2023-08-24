@@ -5,6 +5,7 @@
 package com.actvn.java06.mavenproject1;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -62,7 +63,11 @@ public class SachDangDuocMuon extends Sach {
 
     @Override
     public String toString() {
-        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoiGianMuonSach + ", Thoi gian phai tra sach: " + thoiGianTraSach);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String thoigian1Formatted = thoiGianMuonSach.format(formatter);
+        String thoigian2Formatted = thoiGianTraSach.format(formatter);
+
+        String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoigian1Formatted + ", Thoi gian tra sach: " + thoigian2Formatted);
         return t;
     }
 }

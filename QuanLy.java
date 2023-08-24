@@ -20,6 +20,7 @@ public class QuanLy extends Sach {
 
     //
     private LinkedList<Sach> khoSach = new LinkedList<>();
+    private LinkedList<Sach> danhSachSach = new LinkedList<>();
     private LinkedList<Sach> sachChuaAiMuon = new LinkedList<>();
     private LinkedList<SachDangDuocMuon> sachQuaHanTra = new LinkedList<>();
     private LinkedList<SachDangDuocMuon> sachDangDuocMuon = new LinkedList<>();
@@ -31,6 +32,14 @@ public class QuanLy extends Sach {
     }
 
     public QuanLy() {
+    }
+
+    public LinkedList<Sach> getDanhSachSach() {
+        return danhSachSach;
+    }
+
+    public void setDanhSachSach(LinkedList<Sach> danhSachSach) {
+        this.danhSachSach = danhSachSach;
     }
 
     public LinkedList<Sach> getKhoSach() {
@@ -142,7 +151,10 @@ public class QuanLy extends Sach {
         String NXB = sc.nextLine();
         sach.setNXB(NXB);
         //Them vao list
+
         khoSach.add(sach);
+        danhSachSach.add(sach);
+
         for (int i = 0; i < soLuong; i++) {
             Sach s = new Sach(maSach, tenSach, tacGia, theLoai, 1, NXB);
             sachChuaAiMuon.add(s);
@@ -158,6 +170,8 @@ public class QuanLy extends Sach {
             System.out.println("Khong tim thay sach muon xoa trong kho");
         } else {
             khoSach.remove(timSTTtheomaSach(khoSach, maSachMuonXoa));
+            danhSachSach.remove(timSTTtheomaSach(danhSachSach, maSachMuonXoa));
+
             for (int i = 0; i < sachChuaAiMuon.size(); i++) {
                 if (maSachMuonXoa.equals(sachChuaAiMuon.get(i).getMaSach())) {
                     sachChuaAiMuon.remove(i);
@@ -183,23 +197,28 @@ public class QuanLy extends Sach {
             System.out.println("Nhap ten sach sau: ");
             String tenSach = sc.nextLine();
             khoSach.get(index).setTenSach(tenSach);
+            danhSachSach.get(index).setTenSach(tenSach);
 
             System.out.print("Nhap tac gia sau: \n");
             String tacGia = sc.nextLine();
             khoSach.get(index).setTacGia(tacGia);
+            danhSachSach.get(index).setTacGia(tacGia);
 
             System.out.print("Nhap the loai sau: \n");
             String theLoai = sc.nextLine();
             khoSach.get(index).setTheLoai(theLoai);
+            danhSachSach.get(index).setTacGia(tacGia);
 
             System.out.print("Nhap so luong sau: \n");
             int soLuong = sc.nextInt();
             sc.nextLine();
             khoSach.get(index).setSoLuong(soLuong);
+            danhSachSach.get(index).setTacGia(tacGia);
 
             System.out.print("Nhap NXB sau: \n");
             String NXB = sc.nextLine();
             khoSach.get(index).setNXB(NXB);
+            danhSachSach.get(index).setTacGia(tacGia);
 
             for (int i = 0; i < sachChuaAiMuon.size(); i++) {
                 if (sachChuaAiMuon.get(i).getMaSach().equals(maSachMuonSua)) {
@@ -253,6 +272,9 @@ public class QuanLy extends Sach {
                         //cap nhat
                         int index2 = timSTTtheomaSach(sachChuaAiMuon, maSachChoMuon);
                         sachChuaAiMuon.remove(index2);
+
+                        int index3 = timSTTtheomaSach(danhSachSach, maSachChoMuon);
+                        danhSachSach.get(index3).setSoLuong(danhSachSach.get(index3).getSoLuong() - 1);
                     } else if ("N".equals(lc)) {
                         System.out.println("Nhap ngay muon: ");
                         int day = sc.nextInt();
@@ -268,6 +290,9 @@ public class QuanLy extends Sach {
                         //cap nhat
                         int index2 = timSTTtheomaSach(sachChuaAiMuon, maSachChoMuon);
                         sachChuaAiMuon.remove(index2);
+
+                        int index3 = timSTTtheomaSach(danhSachSach, maSachChoMuon);
+                        danhSachSach.get(index3).setSoLuong(danhSachSach.get(index3).getSoLuong() - 1);
                     }
                 }
             }
@@ -276,7 +301,6 @@ public class QuanLy extends Sach {
 
     //trasach
     public void taoPhienTraSach() {
-        sc.nextLine();
         System.out.println("Nhap ma sach muon tra: ");
         String ms = sc.nextLine();
         //Kiem tra xem sach nay co dang duoc muon khong
@@ -299,15 +323,20 @@ public class QuanLy extends Sach {
                     sachDangDuocMuon.remove(i);
                 }
             }
+
+            int index3 = timSTTtheomaSach(danhSachSach, ms);
+            danhSachSach.get(index3).setSoLuong(danhSachSach.get(index3).getSoLuong() + 1);
         }
     }
 
     //Loc sach qua han tra 
     public void locSachQuaHanTra() {
-        LocalDate now = LocalDate.now();
-        for (int i = 0; i < sachDangDuocMuon.size(); i++) {
-            if (now.isAfter(sachDangDuocMuon.get(i).getThoiGianTraSach())) {
-                sachQuaHanTra.add(sachDangDuocMuon.get(i));
+        if (sachDangDuocMuon.size() > sachQuaHanTra.size()) {
+            LocalDate now = LocalDate.now();
+            for (int i = 0; i < sachDangDuocMuon.size(); i++) {
+                if (now.isAfter(sachDangDuocMuon.get(i).getThoiGianTraSach())) {
+                    sachQuaHanTra.add(sachDangDuocMuon.get(i));
+                }
             }
         }
     }

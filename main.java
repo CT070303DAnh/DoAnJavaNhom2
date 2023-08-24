@@ -22,6 +22,7 @@ public class main extends QuanLy {
         int a;
         do {
             ql.locSachQuaHanTra();
+
             System.out.println("==========================");
             System.out.println("==========================");
             System.out.printf("\tMENU\n");
@@ -69,10 +70,8 @@ public class main extends QuanLy {
                     ql.showKhoSach(ql.getSachChuaAiMuon());
                 case 6 ->
                     ql.showKhoSach(ql.getSachDangDuocMuon());
-                case 7 -> {
-                    ql.locSachQuaHanTra();
+                case 7 ->
                     ql.showSachQuaHan();
-                }
                 case 8 ->
                     ql.taoPhienMuonSach();
                 case 9 ->
