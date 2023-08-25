@@ -1,7 +1,8 @@
 # DoAnJavaNhom2
 ## Đồ án phần mềm quản lí thư viện
 
-![image](https://github.com/CT070303DAnh/DoAnJavaNhom2/assets/134196542/a1aa4337-e106-4ef6-87b9-30d5a50d3606)
+![image](https://github.com/CT070303DAnh/DoAnJavaNhom2/assets/134196542/271def60-49f2-494e-9837-79024e3a0a4b)
+
 
 
 ## Các thành viên:
