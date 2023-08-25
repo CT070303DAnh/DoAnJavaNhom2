@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Admin
  */
-public class SachDangDuocMuon extends Sach {
+public class SachDangDuocMuon extends Sach implements Comparable<SachDangDuocMuon> {
 
     private String maSVmuon;
     private LocalDate thoiGianMuonSach;
@@ -69,5 +69,10 @@ public class SachDangDuocMuon extends Sach {
 
         String t = String.format("Ma SV muon: " + maSVmuon + ", Thoi gian muon sach: " + thoigian1Formatted + ", Thoi gian tra sach: " + thoigian2Formatted);
         return t;
+    }
+
+    @Override
+    public int compareTo(SachDangDuocMuon o) {
+        return this.getTenSach().compareTo(o.getTenSach());
     }
 }
