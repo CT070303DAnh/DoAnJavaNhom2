@@ -1,6 +1,7 @@
 # DoAnJavaNhom2
 ## Đồ án phần mềm quản lí thư viện
-![SoDoCSDL](https://github.com/CT070303DAnh/DoAnJavaNhom2/assets/134196542/57829bef-23a8-4e3c-a659-febd69f55365)
+
+![Uploading newSODO.jpg…]()
 
 ## Các thành viên:
 ## Bùi Đức Anh
