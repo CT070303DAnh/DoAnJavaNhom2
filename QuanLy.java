@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -76,6 +77,12 @@ public class QuanLy extends Sach {
 
     //show
     public <E> void showKhoSach(LinkedList<E> list) {
+        Collections.sort(khoSach, new Comparator<Sach>() {
+            @Override
+            public int compare(Sach o1, Sach o2) {
+                return o1.getTenSach().compareTo(o2.getTenSach());
+            }
+        });
         System.out.println("=======================");
         for (int i = 0; i < list.size(); i++) {
             System.out.println("");
@@ -265,6 +272,7 @@ public class QuanLy extends Sach {
                     sddm.setMaSVmuon(maSV);
                     sddm.setMaSach(maSachChoMuon);
                     sddm.setSoLuong(1);
+
                     if ("Y".equals(lc)) {
                         sddm.setThoiGianMuonSach(now);
                         sddm.setThoiGianTraSach(now.plusMonths(3));
@@ -321,27 +329,44 @@ public class QuanLy extends Sach {
                     Sach sachx = new Sach(sachDangDuocMuon.get(i).getMaSach(), sachDangDuocMuon.get(i).getTenSach(), sachDangDuocMuon.get(i).getTacGia(), sachDangDuocMuon.get(i).getTheLoai(), 1, sachDangDuocMuon.get(i).getNXB());
                     sachChuaAiMuon.add(sachx);
                     sachDangDuocMuon.remove(i);
+
+                    int index3 = timSTTtheomaSach(danhSachSach, ms);
+                    danhSachSach.get(index3).setSoLuong(danhSachSach.get(index3).getSoLuong() + 1);
                 }
             }
-
-            int index3 = timSTTtheomaSach(danhSachSach, ms);
-            danhSachSach.get(index3).setSoLuong(danhSachSach.get(index3).getSoLuong() + 1);
         }
     }
 
     //Loc sach qua han tra 
+    public int kiemtraMaMuon(int maMuon) {
+        int k = -1;
+        for (int i = 0; i < sachQuaHanTra.size(); i++) {
+            if (maMuon == sachQuaHanTra.get(i).getMaMuon()) {
+                k++;
+            }
+        }
+        return k;
+    }
+
     public void locSachQuaHanTra() {
-        if (sachDangDuocMuon.size() > sachQuaHanTra.size()) {
-            LocalDate now = LocalDate.now();
-            for (int i = 0; i < sachDangDuocMuon.size(); i++) {
-                if (now.isAfter(sachDangDuocMuon.get(i).getThoiGianTraSach())) {
-                    sachQuaHanTra.add(sachDangDuocMuon.get(i));
-                }
+        for (int i = 0; i < sachDangDuocMuon.size(); i++) {
+            sachDangDuocMuon.get(i).setMaMuon(i);
+        }
+        LocalDate now = LocalDate.now();
+        for (int i = 0; i < sachDangDuocMuon.size(); i++) {
+            if (now.isAfter(sachDangDuocMuon.get(i).getThoiGianTraSach()) && kiemtraMaMuon(sachDangDuocMuon.get(i).getMaMuon()) == -1) {
+                sachQuaHanTra.add(sachDangDuocMuon.get(i));
             }
         }
     }
 
     public void showSachQuaHan() {
+        Collections.sort(sachQuaHanTra, new Comparator<SachDangDuocMuon>() {
+            @Override
+            public int compare(SachDangDuocMuon o1, SachDangDuocMuon o2) {
+                return o1.getTenSach().compareTo(o2.getTenSach());
+            }
+        });
         System.out.println("=======================");
         for (int i = 0; i < sachQuaHanTra.size(); i++) {
             System.out.println(sachQuaHanTra.get(i).toString());
@@ -352,6 +377,12 @@ public class QuanLy extends Sach {
     //Loc sach NXB
     public void locSachNXB() {
         System.out.println("Nhap NXB muon loc: ");
+        Collections.sort(khoSach, new Comparator<Sach>() {
+            @Override
+            public int compare(Sach o1, Sach o2) {
+                return o1.getTenSach().compareTo(o2.getTenSach());
+            }
+        });
         String NXB = sc.nextLine();
         for (int i = 0; i < khoSach.size(); i++) {
             if (NXB.equals(khoSach.get(i).getNXB())) {
@@ -362,12 +393,30 @@ public class QuanLy extends Sach {
 
     //Loc 10 dau sach con lai it nhat
     public void loc10SachConLaiItNhat() {
-
+        Collections.sort(danhSachSach, new Comparator<Sach>() {
+            @Override
+            public int compare(Sach o1, Sach o2) {
+                return o1.getSoLuong() > o2.getSoLuong() ? 1 : -1;
+            }
+        });
+        if (danhSachSach.size() < 10) {
+            showKhoSach(danhSachSach);
+        } else {
+            for (int i = 0; i < 10; i++) {
+                System.out.println(danhSachSach.get(i).toString());
+            }
+        }
     }
 
     //Loc nhung sinh vien da muon voi 1 dau sach cu the
     public void locNhungSVDaMuonVoi1DauSachCuThe() {
         System.out.println("Nhap ma sach muon kiem tra: ");
+        Collections.sort(sachDangDuocMuon, new Comparator<SachDangDuocMuon>() {
+            @Override
+            public int compare(SachDangDuocMuon o1, SachDangDuocMuon o2) {
+                return o1.getTenSach().compareTo(o2.getTenSach());
+            }
+        });
         String ms = sc.nextLine();
         for (int i = 0; i < sachDangDuocMuon.size(); i++) {
             if (ms.equals(sachDangDuocMuon.get(i).getMaSach())) {
@@ -386,6 +435,12 @@ public class QuanLy extends Sach {
         System.out.println("Nam: ");
         int nam = sc.nextInt();
         LocalDate tgian = LocalDate.of(nam, thang, ngay);
+        Collections.sort(sachDangDuocMuon, new Comparator<SachDangDuocMuon>() {
+            @Override
+            public int compare(SachDangDuocMuon o1, SachDangDuocMuon o2) {
+                return o1.getTenSach().compareTo(o2.getTenSach());
+            }
+        });
         for (int i = 0; i < sachDangDuocMuon.size(); i++) {
             if (tgian.isEqual(sachDangDuocMuon.get(i).getThoiGianMuonSach())) {
                 System.out.println(sachDangDuocMuon.get(i).toString());

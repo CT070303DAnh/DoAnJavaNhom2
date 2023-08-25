@@ -86,6 +86,5 @@ public class main extends QuanLy {
                     ql.loc10SachConLaiItNhat();
             }
         } while (a != 0);
-
     }
 }

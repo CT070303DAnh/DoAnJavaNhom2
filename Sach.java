@@ -8,7 +8,7 @@ package com.actvn.java06.mavenproject1;
  *
  * @author Admin
  */
-public class Sach {
+public class Sach implements Comparable<Sach> {
 
     private String maSach;
     private String tenSach;
@@ -81,5 +81,11 @@ public class Sach {
     public String toString() {
         String t = String.format("Ma sach: " + maSach + ", Ten Sach: " + tenSach + ", Tac gia:  " + tacGia + ", The loai:  " + theLoai + ", So luong: " + soLuong + ", NXB: " + NXB);
         return t;
+    }
+
+    @Override
+    public int compareTo(Sach o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
     }
 }
