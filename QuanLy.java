@@ -182,6 +182,7 @@ public class QuanLy extends Sach {
             for (int i = 0; i < sachChuaAiMuon.size(); i++) {
                 if (maSachMuonXoa.equals(sachChuaAiMuon.get(i).getMaSach())) {
                     sachChuaAiMuon.remove(i);
+                    i--;
                 }
             }
         }
